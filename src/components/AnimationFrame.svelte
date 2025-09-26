@@ -50,44 +50,37 @@
 	// in onMount we define the loop function and start our animationFrame loop.
 	onMount(() => {
 		let frame: number;
-		let lastTime: number;
+		let lastTime = performance.now(); // 초기화 필수
 
-		function loop(timestamp: number | undefined) {
+		function loop(timestamp: number) {
 			frame = requestAnimationFrame(loop);
 
-			let framesCompleted: number;
-			if (timestamp === undefined) {
-				framesCompleted = 1;
-			} else {
-				const elapsed = timestamp - lastTime;
-				lastTime = timestamp;
+			const elapsed = timestamp - lastTime;
+			lastTime = timestamp;
 
-				framesCompleted = elapsed / MS_BETWEEN_FRAMES;
-			}
+			let framesCompleted = elapsed / MS_BETWEEN_FRAMES;
+			if (isNaN(framesCompleted)) framesCompleted = 1;
 
-			if (isNaN(framesCompleted)) {
-				framesCompleted = 1;
-			}
-
+			// 새 배열로 재할당해야 반응성 보장됨
 			loveflakes = loveflakes.map((flake) => {
-				if (flake.y >= 100) {
-					flake.opacity = Math.pow(flake.opacity, MELTING_SPEED);
-				} else {
-					flake.y += FALL_SPEED * flake.scale * framesCompleted;
-					flake.x += WIND_FORCE * flake.scale * framesCompleted;
-					flake.rotation += 1 * framesCompleted;
-				}
-				if (flake.opacity <= 0.02) {
-					flake.y = -20;
-					flake.x = -20 + Math.random() * 120;
-					flake.opacity = 0.999;
-				}
-				return flake;
+			if (flake.y >= 100) {
+				flake.opacity = Math.pow(flake.opacity, MELTING_SPEED);
+			} else {
+				flake.y += FALL_SPEED * flake.scale * framesCompleted;
+				flake.x += WIND_FORCE * flake.scale * framesCompleted;
+				flake.rotation += 1 * framesCompleted;
+			}
+			if (flake.opacity <= 0.02) {
+				flake.y = -20;
+				flake.x = -20 + Math.random() * 120;
+				flake.opacity = 0.999;
+			}
+			return flake;
 			});
+			loveflakes = [...loveflakes]; // ✅ 배열 복사로 반응성 강제
 		}
 
-		loop(undefined);
-
+		frame = requestAnimationFrame(loop);
 		return () => cancelAnimationFrame(frame);
 	});
 </script>
@@ -123,7 +116,7 @@
 
 	.loveframe {
 		pointer-events: none;
-		position: absolute;
+		position: fixed;
 		top: 0;
 		right: 0;
 		bottom: 0;
