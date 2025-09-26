@@ -57,8 +57,8 @@
 			<p class="text-gray-500 text-base">{address}</p>
 		</div>
 
-		<div id="naverMap" class="w-full h-60">
-			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.1833549922544!2d126.87712107653897!3d37.50359342773382!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9e6d91734c27%3A0x102b2a62c34fda08!2z7KCc7J207Jik7Iqk7Yuw7JeY!5e0!3m2!1sko!2sjp!4v1758895181304!5m2!1sko!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		<div id="main_map" class="w-full h-60">
+			<iframe title='map' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.1833549922544!2d126.87712107653897!3d37.50359342773382!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9e6d91734c27%3A0x102b2a62c34fda08!2z7KCc7J207Jik7Iqk7Yuw7JeY!5e0!3m2!1sko!2sjp!4v1758895181304!5m2!1sko!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 		</div>
 		<div class="text-center px-1 py-5">
 			<button
