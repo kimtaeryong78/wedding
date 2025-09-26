@@ -1,6 +1,7 @@
 <script lang="ts">
 	export const ssr = false;
 	import { onMount } from 'svelte';
+	import { env } from '$env/dynamic/public';
 	import { brideName, groomName } from '../resource/input';
 
 	export let isHeartMode: boolean;
@@ -49,6 +50,7 @@
 
 	// in onMount we define the loop function and start our animationFrame loop.
 	onMount(() => {
+		if (typeof window === 'undefined') return; // SSR 방어
 		let frame: number;
 		let lastTime = performance.now(); // 초기화 필수
 		function loop(timestamp: number) {

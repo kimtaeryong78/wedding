@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { PUBLIC_KAKAO_JS_KEY } from '$env/static/public';
 	import githubSquare from 'svelte-awesome/icons/githubSquare';
 	import { Icon } from 'svelte-awesome';
 	import copy from 'copy-to-clipboard';
@@ -19,9 +20,9 @@
 		dday[0] + '년 ' + dday[1] + '월 ' + dday[2] + '일 ' + timeStr + ' \n' + poiName;
 
 	onMount(() => {
-		(window as any).Kakao.init(process.env.PUBLIC_KAKAO_JS_KEY);
+		(window as any).Kakao.init(PUBLIC_KAKAO_JS_KEY);
 		(window as any).Kakao.Share.createDefaultButton({
-			container: '#kakao-share',
+			container: '#kakao-share-btn',
 			objectType: 'feed',
 			content: {
 				title: shareTitle,
