@@ -22,7 +22,7 @@
 	onMount(() => {
 		(window as any).Kakao.init(PUBLIC_KAKAO_JS_KEY);
 		(window as any).Kakao.Share.createDefaultButton({
-			container: '#kakao-share-btn',
+			container: '#kakaotalk-share-btn',
 			objectType: 'feed',
 			content: {
 				title: shareTitle,
@@ -69,7 +69,7 @@
 <section>
 	<div class="text-center px-5 py-5">
 		<button
-			id="kakao-share"
+			id="kakaotalk-share-btn"
 			class="btn inline-block text-black rounded bg-gray-200 px-2 m-2 pb-[5px] pt-[11px] font-medium text-base"
 		>
 			카카오톡으로 공유</button
