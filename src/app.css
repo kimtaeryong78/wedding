@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+	font-family: 'clova-ai-rose';
+	/* src: url('/clova_ai_rose.ttf'); */
+	src: url('/NanumJangMiCe.woff2') format(woff2);
+}
