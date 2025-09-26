@@ -28,6 +28,7 @@
 			href={kakaoURL}
 			target="_blank"
 			rel="noreferrer"
+			aria-label="카카오톡으로 공유"
 		>
 			<svg
 				xmlns="http://www.w3.org/2000/svg"

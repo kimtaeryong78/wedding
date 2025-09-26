@@ -22,7 +22,7 @@
 		mapImageSrc
 	} from '../resource/input';
 
-	export let isMobile: false;
+	let isMobile: boolean;
 
 	onMount(() => {
 		isMobile = /android|iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
@@ -80,7 +80,7 @@
 				width="100%"
 				height="100%"
 				style="border:0;"
-				allowfullscreen=""
+				allowfullscreen
 				loading="lazy"
 				referrerpolicy="no-referrer-when-downgrade"
 			></iframe>

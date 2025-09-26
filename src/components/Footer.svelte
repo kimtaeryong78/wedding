@@ -19,8 +19,8 @@
 		dday[0] + '년 ' + dday[1] + '월 ' + dday[2] + '일 ' + timeStr + ' \n' + poiName;
 
 	onMount(() => {
-		Kakao.init(process.env.PUBLIC_KAKAO_JS_KEY);
-		Kakao.Share.createDefaultButton({
+		(window as any).Kakao.init(process.env.PUBLIC_KAKAO_JS_KEY);
+		(window as any).Kakao.Share.createDefaultButton({
 			container: '#kakao-share',
 			objectType: 'feed',
 			content: {
@@ -59,11 +59,10 @@
 
 <svelte:head>
 	<script
-		src="https://t1.kakaocdn.net/kakao_js_sdk/2.0.1/kakao.min.js"
-		integrity="sha384-eKjgHJ9+vwU/FCSUG3nV1RKFolUXLsc6nLQ2R1tD0t4YFPCvRmkcF8saIfOZNWf/"
+		src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.6/kakao.min.js"
+		integrity="sha384-WAtVcQYcmTO/N+C1N+1m6Gp8qxh+3NlnP7X1U7qP6P5dQY/MsRBNTh+e1ahJrkEm"
 		crossorigin="anonymous"
-	>
-	</script>
+	></script>
 </svelte:head>
 
 <section>

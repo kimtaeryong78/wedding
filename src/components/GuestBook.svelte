@@ -111,14 +111,14 @@
 					</div>
 				</div>
 
-				<div class="divider" />
+				<div class="divider"></div>
 			{/each}
 		</div>
 		<div class="flex flex-row justify-center mt-4">
 			<button
 				class="inline-block text-black rounded bg-gray-200 px-2 pb-[5px] pt-[6px] font-medium text-base"
-				>닫기</button
-			>
+				>닫기
+			</button>
 		</div>
 	</Modal>
 	<GuestBookDialog

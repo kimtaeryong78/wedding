@@ -166,14 +166,14 @@
 						class="textarea w-full rounded-lg textarea-bordered h-24 bg-white"
 						placeholder="메시지"
 						bind:value={message}
-					/>
+					></textarea>
 				{:else}
 					<textarea
 						disabled
 						class="textarea w-full rounded-lg textarea-bordered h-24 bg-white disabled:opacity-50"
 						placeholder="메시지"
 						bind:value={message}
-					/>
+					></textarea>
 				{/if}
 			</div>
 		</form>
