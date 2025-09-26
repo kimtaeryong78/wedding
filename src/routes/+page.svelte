@@ -13,7 +13,6 @@
 
 	let guestMessages: Array<any> = [];
 	let isTouched: boolean = false;
-	let isMobile: boolean = /android|iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
 	const imageUrl = mainImageURL;
 	const siteUrl = siteURL;
 	const title = mainTitle;
@@ -37,7 +36,7 @@
 <div class="divider py-10" />
 <Gallery />
 <div class="divider py-10" />
-<Location bind:isMobile />
+<Location />
 <div class="divider py-10" />
 <Account />
 <Footer />

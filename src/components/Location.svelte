@@ -3,55 +3,21 @@
 	import { env } from '$env/dynamic/public';
 	import { poiName, address, latitude, longitude, kakaoLocationId, privateCarMsg1, privateCarMsg2, privateCarMsg3, publicSubwayMsg1, publicBusMsg1, publicBusMsg2, publicBusMsg3, publicBusMsg4, publicBusMsg5, publicBusMsg6, publicBusMsg7, publicBusMsg8, publicBusMsg9, mapImageSrc } from '../resource/input';
 
-	export let isMobile: boolean;
+	export let isMobile: false;
 
 	onMount(() => {
-		let mapOption = new naver.maps.Map('naverMap', {
-			center: new naver.maps.LatLng(latitude, longitude), // 안내와 다르게 건물 근접 위,경도로 지정
-			zoom: 17
-		});
-
-		let marker = new naver.maps.Marker({
-			position: new naver.maps.LatLng(latitude, longitude),
-			map: mapOption
-		});
+		isMobile = /android|iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
 	});
 
 	//티맵 길안내
 	async function tMap() {
-		if (isMobile) {
-			const href = 'tmap://route?goalx=' +
-				longitude +
-				'&goaly=' +
-				latitude +
-				'&goalname=' +
-				poiName;
-			window.location.href = href;
-		} else {
-			const pos = await new Promise((resolve, reject) => {
-				navigator.geolocation.getCurrentPosition(resolve, reject);
-			});
-			console.log(pos.coords.longitude)
-			console.log(pos.coords.latitude)
-			const result = await fetch('https://apis.openapi.sk.com/tmap/app/routes?version=1', {
-				method: 'POST',
-				headers: {
-					'Accept': 'application/json',
-					'Content-Type': 'application/json',
-					'appKey': String(env.PUBLIC_TMAP_API_KEY)
-				},
-				body: JSON.stringify({
-					startX: pos.coords.longitude,
-					startY: pos.coords.latitude,
-					endX: longitude,
-					endY: latitude,
-					tollgateFareOption: '2',
-					mainRoadInfo: 'Y'
-				})
-			});
-			console.log(result);
-		}
-		let href = isMobile() ? 'tmap://route?' : ('https://apis.openapi.sk.com/tmap/app/routes?appKey=' + String(env.PUBLIC_TMAP_API_KEY) + '&')
+		const href = 'tmap://route?goalx=' +
+			longitude +
+			'&goaly=' +
+			latitude +
+			'&goalname=' +
+			poiName;
+		window.location.href = href;
 	}
 
 	// 구글맵 길안내
@@ -67,23 +33,21 @@
 	}
 
 	//네이버맵 길안내
-	function naverMap(name: string, lat: number, lng: number) {
-		const href =
-			'http://app.map.naver.com/launchApp/?version=11&menu=navigation&elat=' +
-			lat +
-			'&elng=' +
-			lng +
-			'&etitle=' +
-			name;
-		window.location.href = href;
+	function naverMap() {
+		if (isMobile) {
+			const href = 'nmap://route?appname=WeddingMap&lat=' + 
+				longitude +
+				'&lon=' +
+				latitude +
+				'&name=' +
+				poiName
+			window.location.href = href;
+		} else {
+			const href = 'https://map.naver.com/p/directions/-/14124190.9542216,4509559.5806679,%EC%A0%9C%EC%9D%B4%EC%98%A4%EC%8A%A4%ED%8B%B0%EC%97%98,13358566,PLACE_POI/-/transit?c=15.00,0,0,0,dh'	
+			window.location.href = href;
+		}
 	}
 </script>
-
-<svelte:head>
-	<script
-		src="https://oapi.map.naver.com/openapi/v3/maps.js?ncpKeyId={env.PUBLIC_NAVER_API_KEY}"
-	></script>
-</svelte:head>
 
 <section>
 	<div class="py-5 mx-auto">
@@ -93,7 +57,9 @@
 			<p class="text-gray-500 text-base">{address}</p>
 		</div>
 
-		<div id="naverMap" class="w-full h-60" />
+		<div id="naverMap" class="w-full h-60">
+			<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.1833549922544!2d126.87712107653897!3d37.50359342773382!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9e6d91734c27%3A0x102b2a62c34fda08!2z7KCc7J207Jik7Iqk7Yuw7JeY!5e0!3m2!1sko!2sjp!4v1758895181304!5m2!1sko!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</div>
 		<div class="text-center px-1 py-5">
 			<button
 				id="kakao-navi"
