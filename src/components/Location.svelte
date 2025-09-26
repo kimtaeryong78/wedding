@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { env } from '$env/dynamic/public';
 	import { poiName, address, latitude, longitude, kakaoLocationId, privateCarMsg1, privateCarMsg2, privateCarMsg3, publicSubwayMsg1, publicBusMsg1, publicBusMsg2, publicBusMsg3, publicBusMsg4, publicBusMsg5, publicBusMsg6, publicBusMsg7, publicBusMsg8, publicBusMsg9, mapImageSrc } from '../resource/input';
 
 	export let isMobile: false;

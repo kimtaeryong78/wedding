@@ -2,7 +2,6 @@
 	import { onMount } from 'svelte';
 	import githubSquare from 'svelte-awesome/icons/githubSquare';
 	import { Icon } from 'svelte-awesome';
-	import { env } from '$env/dynamic/public';
 	import copy from 'copy-to-clipboard';
 	import { brideFullName, groomFullName, mainImageURL, dday, timeStr, poiName} from '../resource/input';
 
@@ -12,7 +11,7 @@
 	const shareDescription = dday[0] + '년 ' + dday[1] + '월 ' + dday[2] + '일 ' + timeStr + ' \n' + poiName;
 
 	onMount(() => {
-		Kakao.init(env.PUBLIC_KAKAO_JS_KEY);
+		Kakao.init(process.env.PUBLIC_KAKAO_JS_KEY);
 		Kakao.Share.createDefaultButton({
 			container: '#kakao-share',
 			objectType: 'feed',
