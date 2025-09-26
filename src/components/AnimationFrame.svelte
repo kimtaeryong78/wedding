@@ -50,8 +50,9 @@
 	onMount(() => {
 		let frame: number;
 		let lastTime = performance.now(); // 초기화 필수
-
+		console.log('lastTime', lastTime);
 		function loop(timestamp: number) {
+			debugger;
 			frame = requestAnimationFrame(loop);
 
 			const elapsed = timestamp - lastTime;
