@@ -62,8 +62,7 @@ export const privateCarMsg1 = '웨딩홀로 오셔서 바로 주차가능합니�
 export const privateCarMsg2 = '구로기계 공구상가 단지 주차장까지 이용가능합니다.';
 export const privateCarMsg3 = '각 지도의 내비게이션 버튼을 눌러 오시면 편리합니다.';
 
-export const publicSubwayMsg1 =
-	'- 2호선 낙성대역(4번출구) ➡ GS 주유소끼고 좌회전 ➡ 제과점(장블랑제리) 앞에서 마을버스 2번';
+export const publicSubwayMsg1 = '- 지하철 1호선 구로역 2번,3번 출구 도보 3분';
 
 export const publicBusMsg1 = '- 구로기계공구상가 17-146';
 export const publicBusMsg2 = '➡ G 5630 , 6516 , 6613';
