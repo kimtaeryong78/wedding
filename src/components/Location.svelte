@@ -1,6 +1,26 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { poiName, address, latitude, longitude, kakaoLocationId, privateCarMsg1, privateCarMsg2, privateCarMsg3, publicSubwayMsg1, publicBusMsg1, publicBusMsg2, publicBusMsg3, publicBusMsg4, publicBusMsg5, publicBusMsg6, publicBusMsg7, publicBusMsg8, publicBusMsg9, mapImageSrc } from '../resource/input';
+	import {
+		poiName,
+		address,
+		latitude,
+		longitude,
+		kakaoLocationId,
+		privateCarMsg1,
+		privateCarMsg2,
+		privateCarMsg3,
+		publicSubwayMsg1,
+		publicBusMsg1,
+		publicBusMsg2,
+		publicBusMsg3,
+		publicBusMsg4,
+		publicBusMsg5,
+		publicBusMsg6,
+		publicBusMsg7,
+		publicBusMsg8,
+		publicBusMsg9,
+		mapImageSrc
+	} from '../resource/input';
 
 	export let isMobile: false;
 
@@ -10,18 +30,13 @@
 
 	//티맵 길안내
 	async function tMap() {
-		const href = 'tmap://route?goalx=' +
-			longitude +
-			'&goaly=' +
-			latitude +
-			'&goalname=' +
-			poiName;
+		const href = 'tmap://route?goalx=' + longitude + '&goaly=' + latitude + '&goalname=' + poiName;
 		window.location.href = href;
 	}
 
 	// 구글맵 길안내
 	function gMap() {
-		const href = 'https://www.google.com/maps/dir/?api=1&destination=제이오스티엘'
+		const href = 'https://www.google.com/maps/dir/?api=1&destination=제이오스티엘';
 		window.location.href = href;
 	}
 
@@ -34,15 +49,17 @@
 	//네이버맵 길안내
 	function naverMap() {
 		if (isMobile) {
-			const href = 'nmap://route?appname=WeddingMap&lat=' + 
+			const href =
+				'nmap://route?appname=WeddingMap&lat=' +
 				longitude +
 				'&lon=' +
 				latitude +
 				'&name=' +
-				poiName
+				poiName;
 			window.location.href = href;
 		} else {
-			const href = 'https://map.naver.com/p/directions/-/14124190.9542216,4509559.5806679,%EC%A0%9C%EC%9D%B4%EC%98%A4%EC%8A%A4%ED%8B%B0%EC%97%98,13358566,PLACE_POI/-/transit?c=15.00,0,0,0,dh'	
+			const href =
+				'https://map.naver.com/p/directions/-/14124190.9542216,4509559.5806679,%EC%A0%9C%EC%9D%B4%EC%98%A4%EC%8A%A4%ED%8B%B0%EC%97%98,13358566,PLACE_POI/-/transit?c=15.00,0,0,0,dh';
 			window.location.href = href;
 		}
 	}
@@ -57,41 +74,34 @@
 		</div>
 
 		<div id="main_map" class="w-full h-60">
-			<iframe title='map' src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.1833549922544!2d126.87712107653897!3d37.50359342773382!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9e6d91734c27%3A0x102b2a62c34fda08!2z7KCc7J207Jik7Iqk7Yuw7JeY!5e0!3m2!1sko!2sjp!4v1758895181304!5m2!1sko!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			<iframe
+				title="map"
+				src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.1833549922544!2d126.87712107653897!3d37.50359342773382!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357c9e6d91734c27%3A0x102b2a62c34fda08!2z7KCc7J207Jik7Iqk7Yuw7JeY!5e0!3m2!1sko!2sjp!4v1758895181304!5m2!1sko!2sjp"
+				width="100%"
+				height="100%"
+				style="border:0;"
+				allowfullscreen=""
+				loading="lazy"
+				referrerpolicy="no-referrer-when-downgrade"
+			></iframe>
 		</div>
 		<div class="text-center px-1 py-5">
-			<button
-				id="kakao-navi"
-				on:click={kakaoMap}
-				class="btn rounded-lg mx-2"
-			>
+			<button id="kakao-navi" on:click={kakaoMap} class="btn rounded-lg mx-2">
 				<img src="image/kakao.png" height="10" width="10" alt="" />
 				<span class="text-sm">카카오 지도</span>
 			</button>
-{#if isMobile}
-			<button
-				id="tmap-navi"
-				on:click={tMap}
-				class="btn mx-2 rounded-lg"
-			>
-				<img src="image/tmap.png" height="10" width="10" alt="" />
-				<span class="text-sm">티맵 내비</span>
-			</button>
-{:else}
-			<button
-				id="gmap-navi"
-				on:click={gMap}
-				class="btn mx-2 rounded-lg"
-			>
-				<img src="image/gmap.png" height="10" width="10" alt="" />
-				<span class="text-sm">구글 맵</span>
-			</button>
-{/if}
-			<button
-				id="naver-navi"
-				on:click={naverMap}
-				class="btn mx-2 rounded-lg"
-			>
+			{#if isMobile}
+				<button id="tmap-navi" on:click={tMap} class="btn mx-2 rounded-lg">
+					<img src="image/tmap.png" height="10" width="10" alt="" />
+					<span class="text-sm">티맵 내비</span>
+				</button>
+			{:else}
+				<button id="gmap-navi" on:click={gMap} class="btn mx-2 rounded-lg">
+					<img src="image/gmap.png" height="10" width="10" alt="" />
+					<span class="text-sm">구글 맵</span>
+				</button>
+			{/if}
+			<button id="naver-navi" on:click={naverMap} class="btn mx-2 rounded-lg">
 				<img src="image/naver.png" height="10" width="10" alt="" />
 				<span class="text-sm">네이버 지도</span>
 			</button>

@@ -3,12 +3,20 @@
 	import githubSquare from 'svelte-awesome/icons/githubSquare';
 	import { Icon } from 'svelte-awesome';
 	import copy from 'copy-to-clipboard';
-	import { brideFullName, groomFullName, mainImageURL, dday, timeStr, poiName} from '../resource/input';
+	import {
+		brideFullName,
+		groomFullName,
+		mainImageURL,
+		dday,
+		timeStr,
+		poiName
+	} from '../resource/input';
 
 	// share main image
 	const shareImageUrl = mainImageURL;
 	const shareTitle = groomFullName + ' ❤ ' + brideFullName + '의 결혼식에 초대합니다.';
-	const shareDescription = dday[0] + '년 ' + dday[1] + '월 ' + dday[2] + '일 ' + timeStr + ' \n' + poiName;
+	const shareDescription =
+		dday[0] + '년 ' + dday[1] + '월 ' + dday[2] + '일 ' + timeStr + ' \n' + poiName;
 
 	onMount(() => {
 		Kakao.init(process.env.PUBLIC_KAKAO_JS_KEY);
@@ -21,7 +29,7 @@
 				imageUrl: shareImageUrl,
 				link: {
 					mobileWebUrl: 'https://developers.kakao.com',
-					webUrl: 'https://developers.kakao.com',
+					webUrl: 'https://developers.kakao.com'
 				}
 			},
 			buttons: [
@@ -77,7 +85,12 @@
 	<div class="max-w-xl w-full mx-auto flex space-x-2 text-sm justify-center items-center">
 		<span> developed by </span>
 		<span class="text-lg font-bold text-gray-800"> kimtaeryong78 </span>
-		<a class="text-gray-400" href="https://github.com/kimtaeryong78" target="_blank" rel="noreferrer">
+		<a
+			class="text-gray-400"
+			href="https://github.com/kimtaeryong78"
+			target="_blank"
+			rel="noreferrer"
+		>
 			<Icon class="blackIcon text-black" data={githubSquare} scale={2} />
 		</a>
 	</div>

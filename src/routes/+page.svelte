@@ -9,7 +9,7 @@
 	import Gallery from '../components/Gallery.svelte';
 	import Footer from '../components/Footer.svelte';
 	import Account from '../components/Account.svelte';
-	import {dday, mainDescription, mainImageURL, mainTitle, siteURL} from '../resource/input';
+	import { dday, mainDescription, mainImageURL, mainTitle, siteURL } from '../resource/input';
 
 	let guestMessages: Array<any> = [];
 	let isTouched: boolean = false;

@@ -26,7 +26,6 @@
 			return false;
 		}
 	};
-
 </script>
 
 <div class="mx-auto w-full">

@@ -3,7 +3,7 @@
 	import { AccountInfo } from '../resource/input';
 
 	const groomName = AccountInfo.groomName;
-	const groomBank = AccountInfo.groomBank 
+	const groomBank = AccountInfo.groomBank;
 	const groomAccountNum = AccountInfo.groomAccountNum;
 	const groomKakaoURL = AccountInfo.groomKakaoURL;
 
@@ -43,11 +43,11 @@
 			accountNum={groomAccountNum}
 			kakaoURL={groomKakaoURL}
 		/>
-		<AccountItem 
-			name={groomFatherName} 
-			bank={groomFatherBank} 
-			accountNum={groomFatherAccountNum} 
-			kakaoURL={groomFatherKakaoURL} 
+		<AccountItem
+			name={groomFatherName}
+			bank={groomFatherBank}
+			accountNum={groomFatherAccountNum}
+			kakaoURL={groomFatherKakaoURL}
 		/>
 		<AccountItem
 			name={groomMotherName}
@@ -64,16 +64,16 @@
 			accountNum={brideAccountNum}
 			kakaoURL={brideKakaoURL}
 		/>
-		<AccountItem 
-			name={brideFatherName} 
-			bank={brideFatherBank} 
-			accountNum={brideFatherAccountNum} 
-			kakaoURL={brideFatherKakaoURL} 
+		<AccountItem
+			name={brideFatherName}
+			bank={brideFatherBank}
+			accountNum={brideFatherAccountNum}
+			kakaoURL={brideFatherKakaoURL}
 		/>
-		<AccountItem 
-			name={brideMotherName} 
-			bank={brideMotherBank} 
-			accountNum={brideMotherAccountNum} 
+		<AccountItem
+			name={brideMotherName}
+			bank={brideMotherBank}
+			accountNum={brideMotherAccountNum}
 			kakaoURL={brideMotherKakaoURL}
 		/>
 	</details>

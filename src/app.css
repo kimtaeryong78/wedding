@@ -1,15 +1,15 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 @plugin "daisyui" {
 	themes: autumn;
-};
+}
 @plugin "flowbite/plugin";
 
 @font-face {
 	font-family: 'clova-ai-rose';
 	/* src: url('/clova_ai_rose.ttf'); */
-	src: url('/NanumJangMiCe.woff2') format("woff2");
+	src: url('/NanumJangMiCe.woff2') format('woff2');
 }
 
 @theme {
-  --font-mywife: "clova-ai-rose", sans-serif;
+	--font-mywife: 'clova-ai-rose', sans-serif;
 }

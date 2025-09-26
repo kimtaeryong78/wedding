@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { brideName } from '../resource/input';
-	import { groomName } from '../resource/input';
+	import { brideName, groomName } from '../resource/input';
 
 	export let isHeartMode: boolean;
 
@@ -63,19 +62,19 @@
 
 			// 새 배열로 재할당해야 반응성 보장됨
 			loveflakes = loveflakes.map((flake) => {
-			if (flake.y >= 100) {
-				flake.opacity = Math.pow(flake.opacity, MELTING_SPEED);
-			} else {
-				flake.y += FALL_SPEED * flake.scale * framesCompleted;
-				flake.x += WIND_FORCE * flake.scale * framesCompleted;
-				flake.rotation += 1 * framesCompleted;
-			}
-			if (flake.opacity <= 0.02) {
-				flake.y = -20;
-				flake.x = -20 + Math.random() * 120;
-				flake.opacity = 0.999;
-			}
-			return flake;
+				if (flake.y >= 100) {
+					flake.opacity = Math.pow(flake.opacity, MELTING_SPEED);
+				} else {
+					flake.y += FALL_SPEED * flake.scale * framesCompleted;
+					flake.x += WIND_FORCE * flake.scale * framesCompleted;
+					flake.rotation += 1 * framesCompleted;
+				}
+				if (flake.opacity <= 0.02) {
+					flake.y = -20;
+					flake.x = -20 + Math.random() * 120;
+					flake.opacity = 0.999;
+				}
+				return flake;
 			});
 			loveflakes = [...loveflakes]; // ✅ 배열 복사로 반응성 강제
 		}

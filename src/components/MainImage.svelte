@@ -1,5 +1,13 @@
 <script lang="ts">
-	import { groomFullName, dday, brideFullName, mainImageURL, poiSubText, poiName, timeStr } from '../resource/input'
+	import {
+		groomFullName,
+		dday,
+		brideFullName,
+		mainImageURL,
+		poiSubText,
+		poiName,
+		timeStr
+	} from '../resource/input';
 
 	const dateText = dday[0] + '년 ' + dday[1] + '월 ' + dday[2] + '일, ' + timeStr;
 	export let isTouched: boolean;
