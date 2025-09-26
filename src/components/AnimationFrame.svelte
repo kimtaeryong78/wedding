@@ -1,4 +1,5 @@
 <script lang="ts">
+	export const ssr = false;
 	import { onMount } from 'svelte';
 	import { brideName, groomName } from '../resource/input';
 
@@ -47,6 +48,7 @@
 		.sort((a, b) => a.scale - b.scale);
 
 	// in onMount we define the loop function and start our animationFrame loop.
+	debugger;
 	onMount(() => {
 		let frame: number;
 		let lastTime = performance.now(); // 초기화 필수
