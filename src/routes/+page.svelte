@@ -30,14 +30,14 @@
 
 <Header />
 <MainImage bind:isTouched />
-<div class="divider py-10" />
+<div class="divider py-10"></div>
 <MainMessage />
 <Calendar year={dday[0]} month={dday[1]} theDay={dday[2]} />
-<div class="divider py-10" />
+<div class="divider py-10"></div>
 <Gallery />
-<div class="divider py-10" />
+<div class="divider py-10"></div>
 <Location />
-<div class="divider py-10" />
+<div class="divider py-10"></div>
 <Account />
 <Footer />
 

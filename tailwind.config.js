@@ -29,6 +29,6 @@ export default {
 		}
 	},
 	daisyui: {
-		themes: ['winter']
+		themes: ['autumn']
 	}
 };

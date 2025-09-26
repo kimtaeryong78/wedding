@@ -7,9 +7,9 @@
 	import { brideFullName, groomFullName, mainImageURL, dday, timeStr, poiName} from '../resource/input';
 
 	// share main image
-	const imageUrl = mainImageURL;
-	const title = groomFullName + ' ❤ ' + brideFullName + '의 결혼식에 초대합니다.';
-	const description = dday[0] + '년 ' + dday[1] + '월 ' + dday[2] + '일 ' + timeStr + ' \n' + poiName;
+	const shareImageUrl = mainImageURL;
+	const shareTitle = groomFullName + ' ❤ ' + brideFullName + '의 결혼식에 초대합니다.';
+	const shareDescription = dday[0] + '년 ' + dday[1] + '월 ' + dday[2] + '일 ' + timeStr + ' \n' + poiName;
 
 	onMount(() => {
 		Kakao.init(env.PUBLIC_KAKAO_JS_KEY);
@@ -17,12 +17,12 @@
 			container: '#kakao-share',
 			objectType: 'feed',
 			content: {
-				title,
-				description,
-				imageUrl,
+				title: shareTitle,
+				description: shareDescription,
+				imageUrl: shareImageUrl,
 				link: {
-					mobileWebUrl: window.location.href,
-					webUrl: window.location.href
+					mobileWebUrl: 'https://developers.kakao.com',
+					webUrl: 'https://developers.kakao.com',
 				}
 			},
 			buttons: [

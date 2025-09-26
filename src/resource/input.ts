@@ -53,7 +53,7 @@ export const AccountInfo = {
 // date, place 
 export const dday = [2026, 1, 3]
 export const timeStr = '토요일 12시 '
-export const poiSubText = '---------'
+export const poiSubText = 'j-ostiel wedding hall'
 export const poiName = '제이오스티엘 웨딩홀'
 export const address = '구로구 구로동 604-19'
 
@@ -93,16 +93,19 @@ export const mainMsg8 = '정말 큰 기쁨이자 힘이 될 거예요.'
 // resource path
 export const mapImageSrc = "image/map.jpg"
 export let images: string[] = [
-    'image/1.jpeg',
-    'image/2.jpeg',
-    'image/3.jpeg',
-    'image/4.jpeg',
-    'image/5.jpeg',
-    'image/6.jpeg',
-    'image/7.jpeg',
-    'image/8.jpeg',
-    'image/9.jpeg',
+    'image/DSC00291.JPG',
+    'image/DSC01208.JPG',
+    'image/DSC00696.jpeg',
+    'image/DSC00698.jpeg',
+    'image/DSC00699.jpeg',
+    'image/DSC00718.jpeg',
+    'image/DSC01387.jpeg',
+    'image/DSC01388.jpeg',
+    'image/IMG_0759.jpeg',
+    'image/TalkMedia_i_96fbe79c36ae.jpeg.jpeg',
+    'image/TalkMedia_i_73903b1a672e.jpeg.jpeg',
+    'image/TalkMedia_i_1a8292c93109.jpeg.jpeg',
 ];
 
-export const mainImageURL = 'image/kakao_link_image.jpeg';
+export const mainImageURL = 'image/20250927_0241.png';
 export const siteURL = 'https://github'

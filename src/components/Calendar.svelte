@@ -98,7 +98,7 @@
 		{/each}
 	</div>
 	<div>
-		<p class="leading-relaxed mt-1" />
+		<p class="leading-relaxed mt-1"></p>
 	</div>
 	<div class="card p-4 my-2 bg-gray-100 shadow-xl">
 		<h2 class="text-xl font-bold title-font">{getDDay(dday[0], dday[1], dday[2])}</h2>

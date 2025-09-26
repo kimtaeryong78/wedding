@@ -99,7 +99,7 @@
 		</div>
 		<div class="flex flex-col w-full px-5 mt-4">
 			<div>
-				<p class="leading-relaxed mt-1" />
+				<p class="leading-relaxed mt-1"></p>
 			</div>
 			<div class="card p-4 my-2 bg-base-100 shadow-xl">
 				<h2 class="text-xl font-bold title-font">자가용으로 오시는 경우</h2>
