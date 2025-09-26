@@ -29,16 +29,16 @@
 				description: shareDescription,
 				imageUrl: shareImageUrl,
 				link: {
-					mobileWebUrl: 'https://developers.kakao.com',
-					webUrl: 'https://developers.kakao.com'
+					mobileWebUrl: 'https://wedding-ryomi-lisunnyil.vercel.app/',
+					webUrl: 'https://wedding-ryomi-lisunnyil.vercel.app/'
 				}
 			},
 			buttons: [
 				{
 					title: '청첩장 보러가기',
 					link: {
-						mobileWebUrl: window.location.href,
-						webUrl: window.location.href
+						mobileWebUrl: 'https://wedding-ryomi-lisunnyil.vercel.app/',
+						webUrl: 'https://wedding-ryomi-lisunnyil.vercel.app/'
 					}
 				}
 			]
