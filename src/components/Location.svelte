@@ -29,7 +29,8 @@
 			return;
 		}
 
-		const tMapUrl = 'tmap://route?goalname=제이오스티엘&by=CAR';
+		const tMapUrl =
+			'https://tmap.life/05898510';
 		const appStoreUrl = 'https://apps.apple.com/kr/app/티맵-tmap-내비게이션/id431589174';
 		const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.skt.tmap.ku';
 
