@@ -96,7 +96,6 @@ export let images: string[] = [
 	'image/gallery/gallery005.jpeg',
 	'image/gallery/gallery006.jpeg',
 	'image/gallery/gallery007.jpeg',
-	'image/gallery/gallery008.jpeg',
 	'image/gallery/gallery009.jpeg',
 	'image/gallery/gallery010.jpeg',
 	'image/gallery/gallery011.jpeg',
