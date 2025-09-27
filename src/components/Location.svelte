@@ -24,8 +24,53 @@
 
 	//티맵 길안내
 	async function tMap() {
-		const href = 'tmap://route?goalx=' + longitude + '&goaly=' + latitude + '&goalname=' + poiName;
-		window.location.href = href;
+		if (!isMobile) {
+			alert('T맵 내비게이션은 모바일 환경에서만 지원됩니다.');
+			return;
+		}
+
+		const tMapUrl =
+			'tmap://route?goalx=' + longitude + '&goaly=' + latitude + '&goalname=제이오스티엘';
+		const appStoreUrl = 'https://apps.apple.com/kr/app/티맵-tmap-내비게이션/id431589174';
+		const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.skt.tmap.ku';
+
+		const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+		const startTime = new Date().getTime();
+		let hasRedirectedToStore = false;
+
+		const visibilityHandler = () => {
+			const endTime = new Date().getTime();
+			if (endTime - startTime < 1000) {
+				hasRedirectedToStore = true;
+				window.location.href = isIOS ? appStoreUrl : playStoreUrl;
+
+				// 스토어 이동 후 추가 체크를 위한 타이머
+				setTimeout(() => {
+					if (document.visibilityState !== 'hidden') {
+						alert('T맵 네비게이션 앱을 설치해주세요.');
+					}
+				}, 1000);
+			}
+		};
+
+		document.addEventListener('visibilitychange', visibilityHandler);
+
+		window.location.href = tMapUrl;
+
+		setTimeout(() => {
+			document.removeEventListener('visibilitychange', visibilityHandler);
+			if (document.visibilityState !== 'hidden' && !hasRedirectedToStore) {
+				hasRedirectedToStore = true;
+				window.location.href = isIOS ? appStoreUrl : playStoreUrl;
+
+				// 스토어 이동 후 추가 체크를 위한 타이머
+				setTimeout(() => {
+					if (document.visibilityState !== 'hidden') {
+						alert('T맵 네비게이션 앱을 설치해주세요.');
+					}
+				}, 1000);
+			}
+		}, 2000);
 	}
 
 	// 구글맵 길안내
