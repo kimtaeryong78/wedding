@@ -92,6 +92,13 @@
 
 	//네이버맵 길안내
 	function naverMap() {
+		if (!isMobile) {
+			const href =
+				'https://map.naver.com/p/directions/-/14124190.9542216,4509559.5806679,%EC%A0%9C%EC%9D%B4%EC%98%A4%EC%8A%A4%ED%8B%B0%EC%97%98,13358566,PLACE_POI/-/transit?c=15.00,0,0,0,dh';
+			window.location.href = href;
+			return;
+		}
+
 		const appName = encodeURIComponent(window.location.origin);
 		const schemeUrl = `nmap://route/car?dlat=${latitude}&dlng=${longitude}&dname=제이오스티엘&appname=${appName}`;
 		const appStoreUrl = 'https://apps.apple.com/app/id311867728'; // 네이버 지도 App Store
