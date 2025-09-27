@@ -7,6 +7,7 @@
 	export let bank: string;
 	export let accountNum: string;
 	export let kakaoURL: string = '';
+	export let isMobile: boolean;
 
 	const copyAccount = (accountInfo: string) => {
 		copy(accountInfo.replaceAll('-', ''));
@@ -22,7 +23,7 @@
 		class="inline-block rounded bg-gray-200 px-2 m-1 pb-[5px] pt-[6px] text-xs font-medium"
 		on:click={() => copyAccount(accountNum)}>복사<Icon data={copyIcon} /></button
 	>
-	{#if kakaoURL.length > 0}
+	{#if kakaoURL.length > 0 && isMobile}
 		<a
 			class="inline-block rounded bg-gray-200 px-2 m-1 pb-[9px] pt-[10px] text-xs font-medium"
 			href={kakaoURL}

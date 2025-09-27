@@ -31,50 +31,70 @@
 	const brideFatherBank = AccountInfo.brideFatherBank;
 	const brideFatherAccountNum = AccountInfo.brideFatherAccountNum;
 	const brideFatherKakaoURL = AccountInfo.brideFatherKakaoURL;
+
+	export let isMobile: boolean;
 </script>
 
 <div class="py-5 mb-20">
 	<h1 class="text-3xl md:text-3xl m-5 font-bold text-center text-stone-600">마음 전하실 곳</h1>
 	<details class="text-center m-2">
 		<summary class="cursor-pointer text-lg">신랑측 계좌번호</summary>
-		<AccountItem
-			name={groomName}
-			bank={groomBank}
-			accountNum={groomAccountNum}
-			kakaoURL={groomKakaoURL}
-		/>
-		<AccountItem
-			name={groomFatherName}
-			bank={groomFatherBank}
-			accountNum={groomFatherAccountNum}
-			kakaoURL={groomFatherKakaoURL}
-		/>
-		<AccountItem
-			name={groomMotherName}
-			bank={groomMotherBank}
-			accountNum={groomMotherAccountNum}
-			kakaoURL={groomMotherKakaoURL}
-		/>
+		{#if groomName.length > 0}
+			<AccountItem
+				name={groomName}
+				bank={groomBank}
+				accountNum={groomAccountNum}
+				kakaoURL={groomKakaoURL}
+				bind:isMobile
+			/>
+		{/if}
+		{#if groomFatherName.length > 0}
+			<AccountItem
+				name={groomFatherName}
+				bank={groomFatherBank}
+				accountNum={groomFatherAccountNum}
+				kakaoURL={groomFatherKakaoURL}
+				bind:isMobile
+			/>
+		{/if}
+		{#if groomMotherName.length > 0}
+			<AccountItem
+				name={groomMotherName}
+				bank={groomMotherBank}
+				accountNum={groomMotherAccountNum}
+				kakaoURL={groomMotherKakaoURL}
+				bind:isMobile
+			/>
+		{/if}
 	</details>
 	<details class="text-center m-2">
 		<summary class="cursor-pointer text-lg">신부측 계좌번호</summary>
-		<AccountItem
-			name={brideName}
-			bank={brideBank}
-			accountNum={brideAccountNum}
-			kakaoURL={brideKakaoURL}
-		/>
-		<AccountItem
-			name={brideFatherName}
-			bank={brideFatherBank}
-			accountNum={brideFatherAccountNum}
-			kakaoURL={brideFatherKakaoURL}
-		/>
-		<AccountItem
-			name={brideMotherName}
-			bank={brideMotherBank}
-			accountNum={brideMotherAccountNum}
-			kakaoURL={brideMotherKakaoURL}
-		/>
+		{#if brideName.length > 0}
+			<AccountItem
+				name={brideName}
+				bank={brideBank}
+				accountNum={brideAccountNum}
+				kakaoURL={brideKakaoURL}
+				bind:isMobile
+			/>
+		{/if}
+		{#if brideFatherName.length > 0}
+			<AccountItem
+				name={brideFatherName}
+				bank={brideFatherBank}
+				accountNum={brideFatherAccountNum}
+				kakaoURL={brideFatherKakaoURL}
+				bind:isMobile
+			/>
+		{/if}
+		{#if brideMotherName.length > 0}
+			<AccountItem
+				name={brideMotherName}
+				bank={brideMotherBank}
+				accountNum={brideMotherAccountNum}
+				kakaoURL={brideMotherKakaoURL}
+				bind:isMobile
+			/>
+		{/if}
 	</details>
 </div>

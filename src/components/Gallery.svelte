@@ -9,7 +9,7 @@
 		const [swiper, progress] = e.detail;
 
 		if (progress !== 0) {
-			isSwipingMode = true;
+			isSwipingMode = false;
 		} else {
 			isSwipingMode = false;
 		}
@@ -36,6 +36,7 @@
 			slides-per-view={1}
 			navigation={true}
 			pagination={true}
+			loop
 			setWrapperSize={true}
 			a11y={true}
 			on:progress={onProgress}

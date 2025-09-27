@@ -1,6 +1,4 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
-	import { env } from '$env/dynamic/public';
 	import {
 		poiName,
 		address,
@@ -22,12 +20,7 @@
 		publicBusMsg9,
 		mapImageSrc
 	} from '../resource/input';
-
-	let isMobile: boolean;
-
-	onMount(() => {
-		isMobile = /android|iphone|ipad|ipod/.test(navigator.userAgent.toLowerCase());
-	});
+	export let isMobile: boolean;
 
 	//티맵 길안내
 	async function tMap() {

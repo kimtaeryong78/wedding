@@ -28,18 +28,18 @@ export const AccountInfo = {
 	groomMotherKakaoURL: '',
 
 	brideName: '박영선',
-	brideBank: '신한',
-	brideAccountNum: '',
-	brideKakaoURL: 'https://qr.kakaopay.com/',
+	brideBank: '국민',
+	brideAccountNum: '039002-04-176112',
+	brideKakaoURL: 'https://qr.kakaopay.com/Ej9POBBbF',
 
-	brideMotherName: '박용근',
-	brideMotherBank: '신한',
-	brideMotherAccountNum: '11111-111-1111',
+	brideMotherName: '',
+	brideMotherBank: '',
+	brideMotherAccountNum: '',
 	brideMotherKakaoURL: '',
 
-	brideFatherName: '박옥진',
-	brideFatherBank: '농협',
-	brideFatherAccountNum: '1233-1231-12311',
+	brideFatherName: '',
+	brideFatherBank: '',
+	brideFatherAccountNum: '',
 	brideFatherKakaoURL: '',
 
 	groomOrder: '장남',

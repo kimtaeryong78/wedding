@@ -1,13 +1,13 @@
 <script lang="ts">
 	export const ssr = false;
 	import { onMount } from 'svelte';
-	import { env } from '$env/dynamic/public';
 	import { brideName, groomName } from '../resource/input';
 
 	export let isHeartMode: boolean;
+	export let isMobile: boolean;
 
 	// a bunch of variables defining the love and how it falls
-	const LOVEFLAKES_COUNT = 120; // on firefox should go smoothly up to 750
+	const LOVEFLAKES_COUNT = isMobile ? 60 : 300; // on firefox should go smoothly up to 750
 	const LOVEFLAKE_MIN_SCALE = 0.1;
 	const MELTING_SPEED = 1.12;
 	const WIND_FORCE = 0.01;
@@ -62,7 +62,6 @@
 			let framesCompleted = elapsed / MS_BETWEEN_FRAMES;
 			if (isNaN(framesCompleted)) framesCompleted = 1;
 
-			// 새 배열로 재할당해야 반응성 보장됨
 			loveflakes = loveflakes.map((flake) => {
 				if (flake.y >= 100) {
 					flake.opacity = Math.pow(flake.opacity, MELTING_SPEED);
@@ -78,7 +77,7 @@
 				}
 				return flake;
 			});
-			loveflakes = [...loveflakes]; // ✅ 배열 복사로 반응성 강제
+			loveflakes = [...loveflakes];
 		}
 
 		frame = requestAnimationFrame(loop);
@@ -117,7 +116,7 @@
 
 	.loveframe {
 		pointer-events: none;
-		position: fixed;
+		position: absolute;
 		top: 0;
 		right: 0;
 		bottom: 0;

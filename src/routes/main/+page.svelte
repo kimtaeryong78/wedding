@@ -1,21 +1,18 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import { page } from '$app/state';
 
-	import Header from '../components/Header.svelte';
-	import MainImage from '../components/MainImage.svelte';
-	import MainMessage from '../components/MainMessage.svelte';
-	import AnimationFrame from '../components/AnimationFrame.svelte';
-	import Calendar from '../components/Calendar.svelte';
-	import Location from '../components/Location.svelte';
-	import Gallery from '../components/Gallery.svelte';
-	import Footer from '../components/Footer.svelte';
-	import Account from '../components/Account.svelte';
-	import { dday, mainDescription, mainImageURL, mainTitle, siteURL } from '../resource/input';
+	import Header from '../../components/Header.svelte';
+	import MainImage from '../../components/MainImage.svelte';
+	import MainMessage from '../../components/MainMessage.svelte';
+	import AnimationFrame from '../../components/AnimationFrame.svelte';
+	import Calendar from '../../components/Calendar.svelte';
+	import Location from '../../components/Location.svelte';
+	import Gallery from '../../components/Gallery.svelte';
+	import Footer from '../../components/Footer.svelte';
+	import { dday, mainDescription, mainImageURL, mainTitle, siteURL } from '../../resource/input';
 
 	let isTouched: boolean = false;
 	let isMobile: boolean = false;
-	const currentPath = page.url.pathname;
 
 	const imageUrl = mainImageURL;
 	const siteUrl = siteURL;
@@ -46,9 +43,6 @@
 <div class="divide-y py-10"></div>
 <Location bind:isMobile />
 <div class="divide-y py-10"></div>
-{#if !currentPath.startsWith('/main')}
-	<Account bind:isMobile />
-{/if}
 <Footer />
 
 {#if !isTouched}
