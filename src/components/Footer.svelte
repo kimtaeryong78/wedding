@@ -46,14 +46,50 @@
 	});
 
 	async function sharePage() {
-		if (navigator.share) {
-			navigator.share({
-				title: document.title,
-				url: window.location.href
-			});
-		} else {
-			copy(window.location.href);
-			alert('링크가 복사되었습니다.');
+		try {
+			if (navigator.share) {
+				await navigator.share({ title: document.title, url: location.href });
+				return;
+			}
+
+			if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
+				await navigator.clipboard.writeText(location.href);
+				alert('링크가 복사되었습니다.');
+				return;
+			}
+
+			// 폴백 라이브러리 사용
+			const ok = copy(location.href);
+			if (ok) {
+				alert('링크가 복사되었습니다.');
+				return;
+			}
+
+			throw new Error('clipboard fallback failed');
+		} catch (err) {
+			console.error('share/copy error', err);
+
+			// 웹뷰 네이티브 핸들러 호출 시도
+			if (window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
+				window.ReactNativeWebView.postMessage(
+					JSON.stringify({ type: 'share', url: location.href, title: document.title })
+				);
+				return;
+			}
+			if (window.Android && typeof window.Android.share === 'function') {
+				window.Android.share(location.href);
+				return;
+			}
+			if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.share) {
+				window.webkit.messageHandlers.share.postMessage({
+					url: location.href,
+					title: document.title
+				});
+				return;
+			}
+
+			// 최후 수단 안내
+			alert('공유에 실패했습니다. 링크를 수동으로 복사해 주세요.');
 		}
 	}
 </script>
