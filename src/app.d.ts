@@ -28,6 +28,7 @@ declare global {
 				};
 			};
 		};
+		MSStream?: any;
 	}
 }
 
