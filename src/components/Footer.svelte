@@ -103,12 +103,12 @@
 	<div class="text-center px-5 py-5">
 		<button
 			id="kakaotalk-share-btn"
-			class="btn inline-block text-black rounded bg-gray-200 px-2 m-2 pb-[5px] pt-[11px] font-medium text-base"
+			class="btn inline-block text-black rounded bg-gray-200 px-2 m-2 py-1 font-medium text-base"
 		>
 			카카오톡으로 공유</button
 		>
 		<button
-			class="btn inline-block text-black rounded bg-gray-200 px-2 m-2 pb-[5px] pt-[6px] font-medium text-base"
+			class="btn inline-block text-black rounded bg-gray-200 px-2 m-2 py-1 font-medium text-base"
 			on:click={sharePage}>링크로 공유</button
 		>
 	</div>
