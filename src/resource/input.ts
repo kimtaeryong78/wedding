@@ -32,12 +32,12 @@ export const AccountInfo = {
 	brideAccountNum: '039002-04-176112',
 	brideKakaoURL: 'https://qr.kakaopay.com/Ej9POBBbF',
 
-	brideMotherName: '',
+	brideMotherName: '박옥진',
 	brideMotherBank: '',
 	brideMotherAccountNum: '',
 	brideMotherKakaoURL: '',
 
-	brideFatherName: '',
+	brideFatherName: '박용근',
 	brideFatherBank: '',
 	brideFatherAccountNum: '',
 	brideFatherKakaoURL: '',
@@ -89,19 +89,19 @@ export const mainMsg8 = '정말 큰 기쁨이자 힘이 될 거예요.';
 // resource path
 export const mapImageSrc = 'image/map.jpg';
 export let images: string[] = [
-	'image/DSC00291.JPG',
-	'image/DSC01208.JPG',
-	'image/DSC00696.jpeg',
-	'image/DSC00698.jpeg',
-	'image/DSC00699.jpeg',
-	'image/DSC00718.jpeg',
-	'image/DSC01387.jpeg',
-	'image/DSC01388.jpeg',
-	'image/IMG_0759.jpeg',
-	'image/TalkMedia_i_96fbe79c36ae.jpeg.jpeg',
-	'image/TalkMedia_i_73903b1a672e.jpeg.jpeg',
-	'image/TalkMedia_i_1a8292c93109.jpeg.jpeg'
+	'image/gallery/gallery001',
+	'image/gallery/gallery002',
+	'image/gallery/gallery003',
+	'image/gallery/gallery004',
+	'image/gallery/gallery005',
+	'image/gallery/gallery006',
+	'image/gallery/gallery007',
+	'image/gallery/gallery008',
+	'image/gallery/gallery009',
+	'image/gallery/gallery010',
+	'image/gallery/gallery011',
+	'image/gallery/gallery012'
 ];
 
-export const mainImageURL = 'image/20250927_0241.png';
-export const siteURL = 'https://github';
+export const mainImageURL = 'image/mainImage.png';
+export const siteURL = 'https://wedding-ryomi-lisunnyil.vercel.app/';

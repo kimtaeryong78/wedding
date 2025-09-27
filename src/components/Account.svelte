@@ -39,7 +39,7 @@
 	<h1 class="text-3xl md:text-3xl m-5 font-bold text-center text-stone-600">마음 전하실 곳</h1>
 	<details class="text-center m-2">
 		<summary class="cursor-pointer text-lg">신랑측 계좌번호</summary>
-		{#if groomName.length > 0}
+		{#if groomBank.length > 0}
 			<AccountItem
 				name={groomName}
 				bank={groomBank}
@@ -48,7 +48,7 @@
 				bind:isMobile
 			/>
 		{/if}
-		{#if groomFatherName.length > 0}
+		{#if groomFatherBank.length > 0}
 			<AccountItem
 				name={groomFatherName}
 				bank={groomFatherBank}
@@ -57,7 +57,7 @@
 				bind:isMobile
 			/>
 		{/if}
-		{#if groomMotherName.length > 0}
+		{#if groomMotherBank.length > 0}
 			<AccountItem
 				name={groomMotherName}
 				bank={groomMotherBank}
@@ -69,7 +69,7 @@
 	</details>
 	<details class="text-center m-2">
 		<summary class="cursor-pointer text-lg">신부측 계좌번호</summary>
-		{#if brideName.length > 0}
+		{#if brideBank.length > 0}
 			<AccountItem
 				name={brideName}
 				bank={brideBank}
@@ -78,7 +78,7 @@
 				bind:isMobile
 			/>
 		{/if}
-		{#if brideFatherName.length > 0}
+		{#if brideFatherBank.length > 0}
 			<AccountItem
 				name={brideFatherName}
 				bank={brideFatherBank}
@@ -87,7 +87,7 @@
 				bind:isMobile
 			/>
 		{/if}
-		{#if brideMotherName.length > 0}
+		{#if brideMotherBank.length > 0}
 			<AccountItem
 				name={brideMotherName}
 				bank={brideMotherBank}

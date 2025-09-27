@@ -30,12 +30,7 @@
 		}
 
 		// const tMapUrl = 'https://tmap.life/05898510';
-		const tMapUrl =
-			'tmap://route?name=제이오스티엘&lon=' +
-			longitude +
-			'&lat=' +
-			latitude +
-			'&goalname=제이오스티엘';
+		const tMapUrl = 'tmap://route?rGoName=제이오스티엘&rGoX=' + latitude + '&rGoY=' + longitude;
 		const appStoreUrl = 'https://apps.apple.com/app/id431589174';
 		const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.skt.tmap.ku';
 
@@ -86,8 +81,13 @@
 
 	//카카오맵 길안내
 	function kakaoMap() {
-		const href = 'https://map.kakao.com/link/to/' + kakaoLocationId;
-		window.location.href = href;
+		if (!isMobile) {
+			const href = 'https://map.kakao.com/link/to/' + kakaoLocationId;
+			window.location.href = href;
+		} else {
+			const href = 'kakaomap://route?ep=' + longitude + ',' + latitude + '&by=CAR';
+			window.location.href = href;
+		}
 	}
 
 	//네이버맵 길안내
@@ -100,7 +100,7 @@
 		}
 
 		const appName = encodeURIComponent(window.location.origin);
-		const schemeUrl = `nmap://route/car?dlat=${latitude}&dlng=${longitude}&dname=제이오스티엘&appname=${appName}`;
+		const schemeUrl = `nmap://route/car?dlat=${longitude}&dlng=${latitude}&dname=제이오스티엘&appname=${appName}`;
 		const appStoreUrl = 'https://apps.apple.com/app/id311867728'; // 네이버 지도 App Store
 		const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.nhn.android.nmap';
 

@@ -7,7 +7,7 @@
 	export let isMobile: boolean;
 
 	// a bunch of variables defining the love and how it falls
-	const LOVEFLAKES_COUNT = isMobile ? 60 : 300; // on firefox should go smoothly up to 750
+	$: LOVEFLAKES_COUNT = isMobile ? 60 : 300; // on firefox should go smoothly up to 750
 	const LOVEFLAKE_MIN_SCALE = 0.1;
 	const MELTING_SPEED = 1.12;
 	const WIND_FORCE = 0.01;
@@ -18,7 +18,6 @@
 	}
 
 	const TARGET_FPS = 60;
-
 	const MS_BETWEEN_FRAMES = 1000 / TARGET_FPS;
 
 	interface SnowFlakeItem {
@@ -43,16 +42,16 @@
 	}
 
 	// actially generating the loveflakes
-	let loveflakes = new Array(LOVEFLAKES_COUNT)
+	$: loveflakes = new Array(LOVEFLAKES_COUNT)
 		.fill(undefined)
 		.map((_, i) => randomLoveflakeConfig(i))
 		.sort((a, b) => a.scale - b.scale);
 
 	// in onMount we define the loop function and start our animationFrame loop.
 	onMount(() => {
-		if (typeof window === 'undefined') return; // SSR 방어
+		if (typeof window === 'undefined') return;
 		let frame: number;
-		let lastTime = performance.now(); // 초기화 필수
+		let lastTime = performance.now();
 		function loop(timestamp: number) {
 			frame = requestAnimationFrame(loop);
 
@@ -106,7 +105,7 @@
 	}
 
 	.loveflake {
-		color: #ffffff;
+		color: #7a7a7a;
 		font-size: 1.2rem;
 		line-height: 1.2rem;
 		position: absolute;
@@ -116,7 +115,7 @@
 
 	.loveframe {
 		pointer-events: none;
-		position: absolute;
+		position: fixed;
 		top: 0;
 		right: 0;
 		bottom: 0;
