@@ -89,18 +89,18 @@ export const mainMsg8 = '정말 큰 기쁨이자 힘이 될 거예요.';
 // resource path
 export const mapImageSrc = 'image/map.jpg';
 export let images: string[] = [
-	'image/gallery/gallery001',
-	'image/gallery/gallery002',
-	'image/gallery/gallery003',
-	'image/gallery/gallery004',
-	'image/gallery/gallery005',
-	'image/gallery/gallery006',
-	'image/gallery/gallery007',
-	'image/gallery/gallery008',
-	'image/gallery/gallery009',
-	'image/gallery/gallery010',
-	'image/gallery/gallery011',
-	'image/gallery/gallery012'
+	'image/gallery/gallery001.jpeg',
+	'image/gallery/gallery002.jpeg',
+	'image/gallery/gallery003.jpeg',
+	'image/gallery/gallery004.jpeg',
+	'image/gallery/gallery005.jpeg',
+	'image/gallery/gallery006.jpeg',
+	'image/gallery/gallery007.jpeg',
+	'image/gallery/gallery008.jpeg',
+	'image/gallery/gallery009.jpeg',
+	'image/gallery/gallery010.jpeg',
+	'image/gallery/gallery011.jpeg',
+	'image/gallery/gallery012.jpeg'
 ];
 
 export const mainImageURL = 'image/mainImage.png';
