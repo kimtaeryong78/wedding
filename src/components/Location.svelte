@@ -29,8 +29,9 @@
 			return;
 		}
 
-		const tMapUrl = 'https://tmap.life/05898510';
-		const appStoreUrl = 'https://apps.apple.com/kr/app/티맵-tmap-내비게이션/id431589174';
+		// const tMapUrl = 'https://tmap.life/05898510';
+		const tMapUrl = 'tmap://route?rGoName=제이오스티엘&rGoX=' + longitude + '&rGoY=' + latitude;
+		const appStoreUrl = 'https://apps.apple.com/app/id431589174';
 		const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.skt.tmap.ku';
 
 		const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
@@ -86,21 +87,74 @@
 
 	//네이버맵 길안내
 	function naverMap() {
-		if (isMobile) {
-			const href =
-				'nmap://navigation?dlat=' +
-				latitude +
-				'&dlng=' +
-				longitude +
-				'dname=제이오스티엘' +
-				poiName +
-				'&appname=wedding-ryomi-lisunnyil.vercel.app';
-			window.location.href = href;
-		} else {
+		if (!isMobile) {
 			const href =
 				'https://map.naver.com/p/directions/-/14124190.9542216,4509559.5806679,%EC%A0%9C%EC%9D%B4%EC%98%A4%EC%8A%A4%ED%8B%B0%EC%97%98,13358566,PLACE_POI/-/transit?c=15.00,0,0,0,dh';
 			window.location.href = href;
+			return;
 		}
+
+		const naverMapUrl =
+			'nmap://navigation?dlat=' +
+			latitude +
+			'&dlng=' +
+			longitude +
+			'&dname=제이오스티엘&appname=wedding-ryomi-lisunnyil.vercel.app';
+		const appStoreUrl = 'https://apps.apple.com/kr/app/네이버-지도-내비게이션/id311867728';
+		const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.nhn.android.nmap';
+
+		const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+		const startTime = new Date().getTime();
+		let hasRedirectedToStore = false;
+
+		const visibilityHandler = () => {
+			const endTime = new Date().getTime();
+			if (endTime - startTime < 1000) {
+				hasRedirectedToStore = true;
+				window.location.href = isIOS ? appStoreUrl : playStoreUrl;
+
+				// 스토어 이동 후 추가 체크를 위한 타이머
+				setTimeout(() => {
+					if (document.visibilityState !== 'hidden') {
+						alert('네이버 지도 앱을 설치해주세요.');
+					}
+				}, 1000);
+			}
+		};
+
+		document.addEventListener('visibilitychange', visibilityHandler);
+
+		window.location.href = naverMapUrl;
+
+		setTimeout(() => {
+			document.removeEventListener('visibilitychange', visibilityHandler);
+			if (document.visibilityState !== 'hidden' && !hasRedirectedToStore) {
+				hasRedirectedToStore = true;
+				window.location.href = isIOS ? appStoreUrl : playStoreUrl;
+
+				// 스토어 이동 후 추가 체크를 위한 타이머
+				setTimeout(() => {
+					if (document.visibilityState !== 'hidden') {
+						alert('네이버 지도 앱을 설치해주세요.');
+					}
+				}, 1000);
+			}
+		}, 2000);
+		// if (isMobile) {
+		// 	const href =
+		// 		'nmap://navigation?dlat=' +
+		// 		latitude +
+		// 		'&dlng=' +
+		// 		longitude +
+		// 		'dname=제이오스티엘' +
+		// 		poiName +
+		// 		'&appname=wedding-ryomi-lisunnyil.vercel.app';
+		// 	window.location.href = href;
+		// } else {
+		// 	const href =
+		// 		'https://map.naver.com/p/directions/-/14124190.9542216,4509559.5806679,%EC%A0%9C%EC%9D%B4%EC%98%A4%EC%8A%A4%ED%8B%B0%EC%97%98,13358566,PLACE_POI/-/transit?c=15.00,0,0,0,dh';
+		// 	window.location.href = href;
+		// }
 	}
 </script>
 
