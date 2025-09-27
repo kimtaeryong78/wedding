@@ -104,43 +104,44 @@
 		const appStoreUrl = 'https://apps.apple.com/app/id311867728'; // 네이버 지도 App Store
 		const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.nhn.android.nmap';
 
-		const userAgent = navigator.userAgent || navigator.vendor;
+		const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+		const startTime = new Date().getTime();
+		let hasRedirectedToStore = false;
 
-		const now = Date.now();
+		const visibilityHandler = () => {
+			const endTime = new Date().getTime();
+			if (endTime - startTime < 1000) {
+				hasRedirectedToStore = true;
+				window.location.href = isIOS ? appStoreUrl : playStoreUrl;
 
-		// 앱 호출
+				// 스토어 이동 후 추가 체크를 위한 타이머
+				setTimeout(() => {
+					if (document.visibilityState !== 'hidden') {
+						alert('네이버 지도 앱을 설치해주세요.');
+					}
+				}, 1000);
+			}
+		};
+
+		document.addEventListener('visibilitychange', visibilityHandler);
+
 		window.location.href = schemeUrl;
 
-		// fallback: 앱이 없으면 App Store로 이동
 		setTimeout(() => {
-			if (Date.now() - now < 2000) {
-				// ✅ iOS
-				if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-					window.location.href = appStoreUrl;
-					// ✅ Android
-				} else if (/android/i.test(userAgent)) {
-					window.location.href = playStoreUrl;
-				}
+			document.removeEventListener('visibilitychange', visibilityHandler);
+			if (document.visibilityState !== 'hidden' && !hasRedirectedToStore) {
+				hasRedirectedToStore = true;
+				window.location.href = isIOS ? appStoreUrl : playStoreUrl;
+
+				// 스토어 이동 후 추가 체크를 위한 타이머
+				setTimeout(() => {
+					if (document.visibilityState !== 'hidden') {
+						alert('네이버 지도 앱을 설치해주세요.');
+					}
+				}, 1000);
 			}
-		}, 1500);
-		return;
+		}, 2000);
 	}
-	// 	// if (isMobile) {
-	// 	// 	const href =
-	// 	// 		'nmap://navigation?dlat=' +
-	// 	// 		latitude +
-	// 	// 		'&dlng=' +
-	// 	// 		longitude +
-	// 	// 		'dname=제이오스티엘' +
-	// 	// 		poiName +
-	// 	// 		'&appname=wedding-ryomi-lisunnyil.vercel.app';
-	// 	// 	window.location.href = href;
-	// 	// } else {
-	// 	// 	const href =
-	// 	// 		'https://map.naver.com/p/directions/-/14124190.9542216,4509559.5806679,%EC%A0%9C%EC%9D%B4%EC%98%A4%EC%8A%A4%ED%8B%B0%EC%97%98,13358566,PLACE_POI/-/transit?c=15.00,0,0,0,dh';
-	// 	// 	window.location.href = href;
-	// 	// }
-	// }
 </script>
 
 <section>
