@@ -29,8 +29,7 @@
 			return;
 		}
 
-		const tMapUrl =
-			'https://tmap.life/05898510';
+		const tMapUrl = 'https://tmap.life/05898510';
 		const appStoreUrl = 'https://apps.apple.com/kr/app/티맵-tmap-내비게이션/id431589174';
 		const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.skt.tmap.ku';
 
@@ -89,12 +88,13 @@
 	function naverMap() {
 		if (isMobile) {
 			const href =
-				'nmap://route?appname=WeddingMap&lat=' +
-				longitude +
-				'&lon=' +
+				'nmap://navigation?dlat=' +
 				latitude +
-				'&name=' +
-				poiName;
+				'&dlng=' +
+				longitude +
+				'dname=제이오스티엘' +
+				poiName +
+				'&appname=wedding-ryomi-lisunnyil.vercel.app';
 			window.location.href = href;
 		} else {
 			const href =
