@@ -14,80 +14,87 @@
 	} from '../resource/input';
 
 	// share main image
-	const shareImageUrl = mainImageURL;
 	const shareTitle = groomFullName + ' ❤ ' + brideFullName + '의 결혼식에 초대합니다.';
 	const shareDescription =
 		dday[0] + '년 ' + dday[1] + '월 ' + dday[2] + '일 ' + timeStr + ' \n' + poiName;
 
 	onMount(() => {
+		const url = location.href;
 		(window as any).Kakao.init(PUBLIC_KAKAO_JS_KEY);
 		(window as any).Kakao.Share.createDefaultButton({
 			container: '#kakaotalk-share-btn',
 			objectType: 'feed',
 			content: {
 				title: shareTitle,
-				description: shareDescription,
-				imageUrl: shareImageUrl,
+				imageUrl: mainImageURL,
 				link: {
-					mobileWebUrl: 'https://wedding-ryomi-lisunnyil.vercel.app/',
-					webUrl: 'https://wedding-ryomi-lisunnyil.vercel.app/'
-				}
+					mobileWebUrl: url,
+					webUrl: url
+				},
+				imageWidth: 300,
+				imageHeight: 200,
+				description: shareDescription
 			},
 			buttons: [
 				{
 					title: '청첩장 보러가기',
 					link: {
-						mobileWebUrl: 'https://wedding-ryomi-lisunnyil.vercel.app/',
-						webUrl: 'https://wedding-ryomi-lisunnyil.vercel.app/'
+						mobileWebUrl: url,
+						webUrl: url
 					}
 				}
-			]
+			],
+			installTalk: true
 		});
 	});
 
 	async function sharePage() {
-		try {
-			if (navigator.share) {
-				await navigator.share({ title: document.title, url: location.href });
-				return;
-			}
+		const url = location.href;
+		const title = document.title;
 
-			if (navigator.clipboard && typeof navigator.clipboard.writeText === 'function') {
-				await navigator.clipboard.writeText(location.href);
-				alert('링크가 복사되었습니다.');
-				return;
-			}
+		if (window.ReactNativeWebView?.postMessage) {
+			window.ReactNativeWebView.postMessage(JSON.stringify({ type: 'share', url, title }));
+			return;
+		}
+		if (window.Android?.share) {
+			window.Android.share(url);
+			return;
+		}
+		if (window.webkit?.messageHandlers?.share) {
+			window.webkit.messageHandlers.share.postMessage({ url, title });
+			return;
+		}
 
-			// 폴백 라이브러리 사용
-			const ok = copy(location.href);
-			if (ok) {
-				alert('링크가 복사되었습니다.');
-				return;
-			}
-
-			throw new Error('clipboard fallback failed');
-		} catch (err) {
-			console.error('share/copy error', err);
-
-			// 웹뷰 네이티브 핸들러 호출 시도
-			if (window.ReactNativeWebView && window.ReactNativeWebView.postMessage) {
-				window.ReactNativeWebView.postMessage(
-					JSON.stringify({ type: 'share', url: location.href, title: document.title })
-				);
-				return;
-			}
-			if (window.Android && typeof window.Android.share === 'function') {
-				window.Android.share(location.href);
-				return;
-			}
-			if (window.webkit && window.webkit.messageHandlers && window.webkit.messageHandlers.share) {
-				window.webkit.messageHandlers.share.postMessage({
-					url: location.href,
-					title: document.title
-				});
-				return;
+		// 2. Web Share API
+		if (navigator.share) {
+			try {
+				await navigator.share({ title, url });
+				return; // 성공 시 그냥 종료
+			} catch (err) {
+				if (err instanceof DOMException && err.name === 'AbortError') {
+					console.log('사용자가 공유를 취소했습니다.');
+					return;
+				}
+				console.warn('Web Share API 실패', err);
 			}
 		}
+
+		if (navigator.clipboard?.writeText) {
+			try {
+				await navigator.clipboard.writeText(url);
+				alert('링크가 복사되었습니다.');
+				return;
+			} catch (err) {
+				console.warn('Clipboard API 실패', err);
+			}
+		}
+
+		if (typeof copy === 'function' && copy(url)) {
+			alert('링크가 복사되었습니다.');
+			return;
+		}
+
+		alert('이 브라우저에서는 공유 기능을 지원하지 않습니다.');
 	}
 </script>
 
